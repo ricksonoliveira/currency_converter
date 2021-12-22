@@ -9,6 +9,8 @@ defmodule CurrencyConverter.Repo.Migrations.CreateUserCurrency do
       add :user_id, :integer
       add :conversion_rate, :float
       add :transaction_id, :string
+      add :value_given, :float
+      add :value_converted, :float
 
       timestamps()
     end

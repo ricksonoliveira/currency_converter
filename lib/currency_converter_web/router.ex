@@ -1,6 +1,8 @@
 defmodule CurrencyConverterWeb.Router do
   use CurrencyConverterWeb, :router
 
+  alias CurrencyConverterWeb.UserController
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -11,13 +13,13 @@ defmodule CurrencyConverterWeb.Router do
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
-  end
 
-  scope "/", CurrencyConverterWeb do
-    pipe_through :browser
-
-    get "/", PageController, :index
+    # User actions
+    scope "/users" do
+      get "/show/:user_id", UserController, :show
+      get "/list", UserController, :list
+      post "/create", UserController, :create_user
+    end
   end
 
   # Other scopes may use custom stacks.
