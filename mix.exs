@@ -57,7 +57,8 @@ defmodule CurrencyConverter.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:money, "~> 1.9"},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
-      {:excoveralls, "~> 0.10", only: :test}
+      {:excoveralls, "~> 0.10", only: :test},
+      {:httpoison, "~> 1.8"}
     ]
   end
 

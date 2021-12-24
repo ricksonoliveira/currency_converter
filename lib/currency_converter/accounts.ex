@@ -16,7 +16,12 @@ defmodule CurrencyConverter.Accounts do
   end
 
   @doc """
-    Gets a single user.
+    Gets user by id.
+  """
+  def get(id), do: Repo.get(User, id)
+
+  @doc """
+    Gets single user.
   """
   def get_user!(id), do: Repo.get!(User, id)
 

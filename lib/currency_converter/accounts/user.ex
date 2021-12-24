@@ -1,11 +1,16 @@
 defmodule CurrencyConverter.Accounts.User do
+  @moduledoc """
+    User schema.
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
-  @foreign_key_type :binary_id
+  @derive {Phoenix.Param, key: :id}
   schema "users" do
     field :name, :string
+
+    has_one :user_currency, CurrencyConverter.Accounts.UserCurrency
 
     timestamps()
   end

@@ -1,7 +1,7 @@
 defmodule CurrencyConverterWeb.Router do
   use CurrencyConverterWeb, :router
 
-  alias CurrencyConverterWeb.UserController
+  alias CurrencyConverterWeb.{UserController, CurrencyController}
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -19,6 +19,10 @@ defmodule CurrencyConverterWeb.Router do
       get "/show/:user_id", UserController, :show
       get "/list", UserController, :list
       post "/create", UserController, :create_user
+    end
+
+    scope "/currency" do
+      post "/convert", CurrencyController, :convert
     end
   end
 

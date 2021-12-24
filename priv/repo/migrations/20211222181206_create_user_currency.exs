@@ -4,13 +4,12 @@ defmodule CurrencyConverter.Repo.Migrations.CreateUserCurrency do
   def change do
     create table(:user_currency, primary_key: false) do
       add :id, :binary_id, primary_key: true
-      add :currency_origin, :string
-      add :currency_destiny, :string
-      add :user_id, :integer
       add :conversion_rate, :float
+      add :currency_destiny, :string
+      add :currency_origin, :string
       add :transaction_id, :string
-      add :value_given, :float
-      add :value_converted, :float
+      add :value_converted, :decimal
+      add :value_given, :decimal
 
       timestamps()
     end

@@ -1,7 +1,13 @@
 defmodule CurrencyConverterWeb.UserController do
+  @moduledoc """
+    Handles user actions
+  """
   alias CurrencyConverter.Accounts
   use CurrencyConverterWeb, :controller
 
+  @doc """
+    Return list of all the users.
+  """
   def list(conn, _) do
     conn
     |> render("list.json", users: Accounts.list_users)
