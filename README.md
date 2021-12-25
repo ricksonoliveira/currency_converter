@@ -5,7 +5,7 @@ Currency converter is a microservice dedicated to easily convert currencies give
 * [Installation](https://github.com/ricksonoliveira/currency_converter#installation)
 * [Tests](https://github.com/ricksonoliveira/currency_converter#tests)
 * [API](https://github.com/ricksonoliveira/currency_converter#api)
-* [Rotas](https://github.com/ricksonoliveira/currency_converter#endpoints)
+* [Rotas](https://github.com/ricksonoliveira/currency_converter#routes)
   
   * [Create User](https://github.com/ricksonoliveira/currency_converter#create-user)
   * [Show User](https://github.com/ricksonoliveira/currency_converter#show-user)
