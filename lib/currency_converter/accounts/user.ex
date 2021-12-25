@@ -10,8 +10,6 @@ defmodule CurrencyConverter.Accounts.User do
   schema "users" do
     field :name, :string
 
-    has_one :user_currency, CurrencyConverter.Accounts.UserCurrency
-
     timestamps()
   end
 

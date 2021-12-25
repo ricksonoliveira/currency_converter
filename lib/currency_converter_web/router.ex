@@ -22,6 +22,7 @@ defmodule CurrencyConverterWeb.Router do
     end
 
     scope "/currency" do
+      get "/list", CurrencyController, :list
       post "/convert", CurrencyController, :convert
     end
   end

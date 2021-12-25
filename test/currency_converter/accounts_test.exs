@@ -2,11 +2,10 @@ defmodule CurrencyConverter.AccountsTest do
   use CurrencyConverter.DataCase
 
   alias CurrencyConverter.Accounts
+  alias CurrencyConverter.Accounts.User
+  import CurrencyConverter.AccountsFixtures
 
   describe "users" do
-    alias CurrencyConverter.Accounts.User
-
-    import CurrencyConverter.AccountsFixtures
 
     @invalid_attrs %{name: nil}
 
@@ -18,6 +17,11 @@ defmodule CurrencyConverter.AccountsTest do
     test "get_user!/1 returns the user with given id" do
       user = user_fixture()
       assert Accounts.get_user!(user.id) == user
+    end
+
+    test "get/1 gets single user with given id" do
+      user = user_fixture()
+      assert Accounts.get(user.id) == user
     end
 
     test "create_user/1 with valid data creates a user" do

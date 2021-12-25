@@ -6,7 +6,7 @@ defmodule CurrencyConverter.Accounts do
   import Ecto.Query, warn: false
   alias CurrencyConverter.Repo
 
-  alias CurrencyConverter.Accounts.User
+  alias CurrencyConverter.Accounts.{User, UserCurrency}
 
   @doc """
     Returns the list of users.
@@ -25,6 +25,8 @@ defmodule CurrencyConverter.Accounts do
   """
   def get_user!(id), do: Repo.get!(User, id)
 
+  def list_user_currencies, do: Repo.all(UserCurrency)
+
   @doc """
     Creates a user.
   """
@@ -32,5 +34,24 @@ defmodule CurrencyConverter.Accounts do
     %User{}
     |> User.changeset(attrs)
     |> Repo.insert()
+  end
+
+   @doc """
+    Create user currency on database.
+  """
+  def create_user_currency(attrs \\ %{}) do
+    transaction = Ecto.Multi.new()
+    |> Ecto.Multi.insert(:user_currency, insert_user_currency(attrs))
+    |> Repo.transaction()
+
+    case transaction do
+      {:ok, operations} -> {:ok, operations.user_currency}
+      {:error, :user_currency, changeset, _} -> {:error, changeset}
+    end
+  end
+
+  def insert_user_currency(attrs) do
+    %UserCurrency{}
+    |> UserCurrency.changeset(attrs)
   end
 end

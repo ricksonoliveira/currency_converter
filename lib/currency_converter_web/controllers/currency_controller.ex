@@ -4,6 +4,15 @@ defmodule CurrencyConverterWeb.CurrencyController do
   """
   use CurrencyConverterWeb, :controller
   alias CurrencyConverter.Converter
+  alias CurrencyConverter.Accounts
+
+  @doc """
+    Returns the list of all the users currencies.
+  """
+  def list(conn, _) do
+    conn
+    |> render("list.json", currencies: Accounts.list_user_currencies)
+  end
 
   def convert(
     conn,

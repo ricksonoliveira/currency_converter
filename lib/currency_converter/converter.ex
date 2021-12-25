@@ -4,14 +4,15 @@ defmodule CurrencyConverter.Converter do
   """
   import Ecto.Query, warn: false
 
-  alias CurrencyConverter.Repo
   alias CurrencyConverter.Accounts
-  alias CurrencyConverter.Accounts.{User, UserCurrency}
 
+  @doc """
+   Convert currency given an origin currency and value.
+  """
   def convert(user_id, value, currency_origin, currency_destiny) do
     user = Accounts.get(user_id)
     validate_data(user, currency_origin, currency_destiny)
-    perform_convertion(user, value, currency_origin, currency_destiny)
+    perform_convertion(value, currency_origin, currency_destiny)
   end
 
   defp validate_data(user, currency_origin, currency_destiny) do
@@ -26,8 +27,10 @@ defmodule CurrencyConverter.Converter do
 
   defp is_convert_to_same_currency?(currency_origin, currency_destiny), do: currency_origin === currency_destiny
 
-
-  def perform_convertion(user, value, currency_origin, currency_destiny) do
+  @doc """
+    Perform conversion logic and persist data.
+  """
+  def perform_convertion(value, currency_origin, currency_destiny) do
     {:ok, response} = get_rates()
 
     value_destiny = cond do
@@ -49,7 +52,7 @@ defmodule CurrencyConverter.Converter do
         response["rates"][currency_destiny]
     end
 
-    create_user_currency(%{
+    Accounts.create_user_currency(%{
       conversion_rate: conversion_rate,
       transaction_id: Ecto.UUID.generate(),
       value_given: Decimal.new(value),
@@ -57,22 +60,6 @@ defmodule CurrencyConverter.Converter do
       currency_destiny: currency_destiny,
       value_converted: value_destiny,
     })
-  end
-
-  def create_user_currency(attrs \\ %{}) do
-    transaction = Ecto.Multi.new()
-    |> Ecto.Multi.insert(:user_currency, create(attrs))
-    |> Repo.transaction()
-
-    case transaction do
-      {:ok, operations} -> {:ok, operations.user_currency}
-      {:error, :user_currency, changeset, _} -> {:error, changeset}
-    end
-  end
-
-  def create(attrs) do
-    %UserCurrency{}
-    |> UserCurrency.changeset(attrs)
   end
 
   def get_rates do
