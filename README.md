@@ -18,6 +18,8 @@ Currency converter is a microservice dedicated to easily convert currencies give
 To use this service you'll need [Elixir](https://elixir-lang.org/install.html),
 [Phoenix](https://hexdocs.pm/phoenix/installation.html) e [PostgreSql](https://www.postgresql.org/).
 
+You may wanna use postgress from a docker container, for that, type the following command to create an up and running postgress container automatically for you `docker-compose -f postgres-compose.yml up -d`
+
 * Install dependencies by using `mix deps.get`
 * Setup your database structure by using `mix ecto.setup`
 * Initialize Phoenix locally by typing `mix phx.server`
