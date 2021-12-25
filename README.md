@@ -134,10 +134,10 @@ Remember to use the id of the user created at endpoint `/users/create`.
 
 ```json
 {
-	"user_id": "d45fdb57-744f-43c5-b342-25f5453573bb",
-	"value": "100",
-	"currency_origin": "BRL",
-	"currency_destiny": "EUR"
+ "user_id": "d45fdb57-744f-43c5-b342-25f5453573bb",
+ "value": "100",
+ "currency_origin": "BRL",
+ "currency_destiny": "EUR"
 }
 ```
 
