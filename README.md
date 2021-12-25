@@ -121,7 +121,7 @@ type: `POST`
 
 * Id of user created: `user_id string`
 
-* Value: `value string|integer|decimal` *value does not matter because it's handled in the process.*,
+* Value: `value string|integer|decimal` *value does not matter because it's handled in the process.*
 
 * Currency in which you wish to convert from: `currency_origin`
 
