@@ -11,16 +11,15 @@ defmodule CurrencyConverter.Converter do
   """
   def convert(user_id, value, currency_origin, currency_destiny) do
     user = Accounts.get(user_id)
-    validate_data(user, currency_origin, currency_destiny)
-    perform_convertion(value, currency_origin, currency_destiny)
+    validate_data(user, value, currency_origin, currency_destiny)
   end
 
-  defp validate_data(user, currency_origin, currency_destiny) do
+  defp validate_data(user, value, currency_origin, currency_destiny) do
     case !user do
       true -> {:error, "User does not exists, please verify the given id!"}
       false -> case is_convert_to_same_currency?(currency_origin, currency_destiny) do
         true -> {:error, "Cannot convert to the same currency given!"}
-        false -> {:ok}
+        false -> perform_conversion(value, currency_origin, currency_destiny)
       end
     end
   end
@@ -30,7 +29,7 @@ defmodule CurrencyConverter.Converter do
   @doc """
     Perform conversion logic and persist data.
   """
-  def perform_convertion(value, currency_origin, currency_destiny) do
+  def perform_conversion(value, currency_origin, currency_destiny) do
     {:ok, response} = get_rates()
 
     value_destiny = cond do

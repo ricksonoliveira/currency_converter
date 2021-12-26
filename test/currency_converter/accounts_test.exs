@@ -47,7 +47,7 @@ defmodule CurrencyConverter.AccountsTest do
         value_converted: Decimal.new(500),
       }
 
-      assert {:ok, %UserCurrency{} = user_currency} = Accounts.create_user_currency(valid_attrs)
+      assert {:ok, %UserCurrency{}} = Accounts.create_user_currency(valid_attrs)
     end
 
     test "create_user_currency/1 with invalid data returns error" do
