@@ -30,6 +30,8 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser or
 
 * Run the tests using the command `mix test`
 
+* Check tests coverage with the command `mix coveralls.html`
+
 ## **API**
 
 To use this service, you might wanna first create you user with your name on it.

@@ -1,7 +1,6 @@
 defmodule CurrencyConverter.ConverterTest do
   use CurrencyConverter.DataCase
   alias CurrencyConverter.Converter
-  alias CurrencyConverter.Accounts.UserCurrency
 
   import CurrencyConverter.AccountsFixtures
 
@@ -15,7 +14,7 @@ defmodule CurrencyConverter.ConverterTest do
     end
 
     test "convert/4 will convert correctly" do
-      assert {:ok, _} = converter_fixture
+      assert {:ok, _} = converter_fixture()
     end
 
     test "convert/4 will return error when user does not exist" do
