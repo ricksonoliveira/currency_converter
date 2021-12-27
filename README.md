@@ -34,9 +34,9 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser or
 
 ## **API**
 
-To use this service, you might wanna first create you user with your name on it.
+To use this service, you might wanna first create an user with your name on it.
 
-After successfully creating it, you'll want to copy you `user_id` to use it for currency conversions afterwards.
+After successfully creating it, you'll want to copy your `user_id` to use it for currency conversions afterwards.
 
 To convert you will have to provide your `user_id`, value to convert `value`, currencies origin and destiny `currency_origin`, `currency_destiny`.
 
